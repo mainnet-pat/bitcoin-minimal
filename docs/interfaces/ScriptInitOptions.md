@@ -1,4 +1,4 @@
-[bsv-minimal](../README.md) / ScriptInitOptions
+[bitcoin-minimal](../README.md) / ScriptInitOptions
 
 # Interface: ScriptInitOptions
 
@@ -16,4 +16,4 @@
 
 #### Defined in
 
-[script.ts:9](https://github.com/kevinejohn/bsv-minimal/blob/master/src/script.ts#L9)
+[script.ts:9](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/script.ts#L9)

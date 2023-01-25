@@ -1,4 +1,4 @@
-[bsv-minimal](../README.md) / Script
+[bitcoin-minimal](../README.md) / Script
 
 # Class: Script
 
@@ -39,7 +39,7 @@
 
 #### Defined in
 
-[script.ts:41](https://github.com/kevinejohn/bsv-minimal/blob/master/src/script.ts#L41)
+[script.ts:41](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/script.ts#L41)
 
 ## Properties
 
@@ -49,7 +49,7 @@
 
 #### Defined in
 
-[script.ts:39](https://github.com/kevinejohn/bsv-minimal/blob/master/src/script.ts#L39)
+[script.ts:39](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/script.ts#L39)
 
 ___
 
@@ -59,7 +59,7 @@ ___
 
 #### Defined in
 
-[script.ts:38](https://github.com/kevinejohn/bsv-minimal/blob/master/src/script.ts#L38)
+[script.ts:38](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/script.ts#L38)
 
 ## Methods
 
@@ -79,7 +79,7 @@ ___
 
 #### Defined in
 
-[script.ts:178](https://github.com/kevinejohn/bsv-minimal/blob/master/src/script.ts#L178)
+[script.ts:178](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/script.ts#L178)
 
 ___
 
@@ -93,7 +93,7 @@ ___
 
 #### Defined in
 
-[script.ts:121](https://github.com/kevinejohn/bsv-minimal/blob/master/src/script.ts#L121)
+[script.ts:121](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/script.ts#L121)
 
 ___
 
@@ -107,7 +107,7 @@ ___
 
 #### Defined in
 
-[script.ts:149](https://github.com/kevinejohn/bsv-minimal/blob/master/src/script.ts#L149)
+[script.ts:149](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/script.ts#L149)
 
 ___
 
@@ -127,7 +127,7 @@ ___
 
 #### Defined in
 
-[script.ts:221](https://github.com/kevinejohn/bsv-minimal/blob/master/src/script.ts#L221)
+[script.ts:221](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/script.ts#L221)
 
 ___
 
@@ -141,7 +141,7 @@ ___
 
 #### Defined in
 
-[script.ts:197](https://github.com/kevinejohn/bsv-minimal/blob/master/src/script.ts#L197)
+[script.ts:197](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/script.ts#L197)
 
 ___
 
@@ -155,7 +155,7 @@ ___
 
 #### Defined in
 
-[script.ts:193](https://github.com/kevinejohn/bsv-minimal/blob/master/src/script.ts#L193)
+[script.ts:193](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/script.ts#L193)
 
 ___
 
@@ -176,7 +176,7 @@ ___
 
 #### Defined in
 
-[script.ts:95](https://github.com/kevinejohn/bsv-minimal/blob/master/src/script.ts#L95)
+[script.ts:95](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/script.ts#L95)
 
 ___
 
@@ -197,4 +197,4 @@ ___
 
 #### Defined in
 
-[script.ts:100](https://github.com/kevinejohn/bsv-minimal/blob/master/src/script.ts#L100)
+[script.ts:100](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/script.ts#L100)

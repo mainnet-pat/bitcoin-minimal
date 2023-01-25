@@ -1,4 +1,4 @@
-[bsv-minimal](../README.md) / Transaction
+[bitcoin-minimal](../README.md) / Transaction
 
 # Class: Transaction
 
@@ -49,7 +49,7 @@
 
 #### Defined in
 
-[transaction.ts:35](https://github.com/kevinejohn/bsv-minimal/blob/master/src/transaction.ts#L35)
+[transaction.ts:35](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/transaction.ts#L35)
 
 ## Properties
 
@@ -59,7 +59,7 @@
 
 #### Defined in
 
-[transaction.ts:30](https://github.com/kevinejohn/bsv-minimal/blob/master/src/transaction.ts#L30)
+[transaction.ts:30](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/transaction.ts#L30)
 
 ___
 
@@ -69,7 +69,7 @@ ___
 
 #### Defined in
 
-[transaction.ts:23](https://github.com/kevinejohn/bsv-minimal/blob/master/src/transaction.ts#L23)
+[transaction.ts:23](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/transaction.ts#L23)
 
 ___
 
@@ -79,7 +79,7 @@ ___
 
 #### Defined in
 
-[transaction.ts:31](https://github.com/kevinejohn/bsv-minimal/blob/master/src/transaction.ts#L31)
+[transaction.ts:31](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/transaction.ts#L31)
 
 ___
 
@@ -89,7 +89,7 @@ ___
 
 #### Defined in
 
-[transaction.ts:32](https://github.com/kevinejohn/bsv-minimal/blob/master/src/transaction.ts#L32)
+[transaction.ts:32](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/transaction.ts#L32)
 
 ___
 
@@ -99,7 +99,7 @@ ___
 
 #### Defined in
 
-[transaction.ts:24](https://github.com/kevinejohn/bsv-minimal/blob/master/src/transaction.ts#L24)
+[transaction.ts:24](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/transaction.ts#L24)
 
 ___
 
@@ -109,7 +109,7 @@ ___
 
 #### Defined in
 
-[transaction.ts:33](https://github.com/kevinejohn/bsv-minimal/blob/master/src/transaction.ts#L33)
+[transaction.ts:33](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/transaction.ts#L33)
 
 ___
 
@@ -119,7 +119,7 @@ ___
 
 #### Defined in
 
-[transaction.ts:29](https://github.com/kevinejohn/bsv-minimal/blob/master/src/transaction.ts#L29)
+[transaction.ts:29](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/transaction.ts#L29)
 
 ___
 
@@ -129,7 +129,7 @@ ___
 
 #### Defined in
 
-[transaction.ts:25](https://github.com/kevinejohn/bsv-minimal/blob/master/src/transaction.ts#L25)
+[transaction.ts:25](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/transaction.ts#L25)
 
 ___
 
@@ -139,7 +139,7 @@ ___
 
 #### Defined in
 
-[transaction.ts:27](https://github.com/kevinejohn/bsv-minimal/blob/master/src/transaction.ts#L27)
+[transaction.ts:27](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/transaction.ts#L27)
 
 ___
 
@@ -149,7 +149,7 @@ ___
 
 #### Defined in
 
-[transaction.ts:28](https://github.com/kevinejohn/bsv-minimal/blob/master/src/transaction.ts#L28)
+[transaction.ts:28](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/transaction.ts#L28)
 
 ___
 
@@ -159,7 +159,7 @@ ___
 
 #### Defined in
 
-[transaction.ts:26](https://github.com/kevinejohn/bsv-minimal/blob/master/src/transaction.ts#L26)
+[transaction.ts:26](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/transaction.ts#L26)
 
 ## Methods
 
@@ -179,7 +179,7 @@ ___
 
 #### Defined in
 
-[transaction.ts:140](https://github.com/kevinejohn/bsv-minimal/blob/master/src/transaction.ts#L140)
+[transaction.ts:140](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/transaction.ts#L140)
 
 ___
 
@@ -193,7 +193,7 @@ ___
 
 #### Defined in
 
-[transaction.ts:151](https://github.com/kevinejohn/bsv-minimal/blob/master/src/transaction.ts#L151)
+[transaction.ts:151](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/transaction.ts#L151)
 
 ___
 
@@ -207,7 +207,7 @@ ___
 
 #### Defined in
 
-[transaction.ts:93](https://github.com/kevinejohn/bsv-minimal/blob/master/src/transaction.ts#L93)
+[transaction.ts:93](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/transaction.ts#L93)
 
 ___
 
@@ -228,7 +228,7 @@ ___
 
 #### Defined in
 
-[transaction.ts:118](https://github.com/kevinejohn/bsv-minimal/blob/master/src/transaction.ts#L118)
+[transaction.ts:118](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/transaction.ts#L118)
 
 ___
 
@@ -248,7 +248,7 @@ ___
 
 #### Defined in
 
-[transaction.ts:105](https://github.com/kevinejohn/bsv-minimal/blob/master/src/transaction.ts#L105)
+[transaction.ts:105](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/transaction.ts#L105)
 
 ___
 
@@ -262,7 +262,7 @@ ___
 
 #### Defined in
 
-[transaction.ts:101](https://github.com/kevinejohn/bsv-minimal/blob/master/src/transaction.ts#L101)
+[transaction.ts:101](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/transaction.ts#L101)
 
 ___
 
@@ -283,7 +283,7 @@ ___
 
 #### Defined in
 
-[transaction.ts:128](https://github.com/kevinejohn/bsv-minimal/blob/master/src/transaction.ts#L128)
+[transaction.ts:128](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/transaction.ts#L128)
 
 ___
 
@@ -297,7 +297,7 @@ ___
 
 #### Defined in
 
-[transaction.ts:89](https://github.com/kevinejohn/bsv-minimal/blob/master/src/transaction.ts#L89)
+[transaction.ts:89](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/transaction.ts#L89)
 
 ___
 
@@ -317,7 +317,7 @@ ___
 
 #### Defined in
 
-[transaction.ts:79](https://github.com/kevinejohn/bsv-minimal/blob/master/src/transaction.ts#L79)
+[transaction.ts:79](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/transaction.ts#L79)
 
 ___
 
@@ -337,4 +337,4 @@ ___
 
 #### Defined in
 
-[transaction.ts:84](https://github.com/kevinejohn/bsv-minimal/blob/master/src/transaction.ts#L84)
+[transaction.ts:84](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/transaction.ts#L84)

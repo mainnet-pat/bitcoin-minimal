@@ -1,4 +1,4 @@
-[bsv-minimal](../README.md) / TransactionInput
+[bitcoin-minimal](../README.md) / TransactionInput
 
 # Interface: TransactionInput
 
@@ -20,7 +20,7 @@
 
 #### Defined in
 
-[transaction.ts:11](https://github.com/kevinejohn/bsv-minimal/blob/master/src/transaction.ts#L11)
+[transaction.ts:11](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/transaction.ts#L11)
 
 ___
 
@@ -30,7 +30,7 @@ ___
 
 #### Defined in
 
-[transaction.ts:10](https://github.com/kevinejohn/bsv-minimal/blob/master/src/transaction.ts#L10)
+[transaction.ts:10](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/transaction.ts#L10)
 
 ___
 
@@ -40,7 +40,7 @@ ___
 
 #### Defined in
 
-[transaction.ts:13](https://github.com/kevinejohn/bsv-minimal/blob/master/src/transaction.ts#L13)
+[transaction.ts:13](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/transaction.ts#L13)
 
 ___
 
@@ -50,7 +50,7 @@ ___
 
 #### Defined in
 
-[transaction.ts:9](https://github.com/kevinejohn/bsv-minimal/blob/master/src/transaction.ts#L9)
+[transaction.ts:9](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/transaction.ts#L9)
 
 ___
 
@@ -60,4 +60,4 @@ ___
 
 #### Defined in
 
-[transaction.ts:12](https://github.com/kevinejohn/bsv-minimal/blob/master/src/transaction.ts#L12)
+[transaction.ts:12](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/transaction.ts#L12)

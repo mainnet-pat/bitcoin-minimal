@@ -1,6 +1,6 @@
-bsv-minimal
+bitcoin-minimal
 
-# bsv-minimal
+# bitcoin-minimal
 
 ## Table of contents
 
@@ -53,7 +53,7 @@ bsv-minimal
 
 #### Defined in
 
-[block.ts:9](https://github.com/kevinejohn/bsv-minimal/blob/master/src/block.ts#L9)
+[block.ts:9](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/block.ts#L9)
 
 ___
 
@@ -78,4 +78,4 @@ ___
 
 #### Defined in
 
-[script.ts:22](https://github.com/kevinejohn/bsv-minimal/blob/master/src/script.ts#L22)
+[script.ts:22](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/script.ts#L22)

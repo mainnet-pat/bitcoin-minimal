@@ -1,4 +1,4 @@
-[bsv-minimal](../README.md) / utils
+[bitcoin-minimal](../README.md) / utils
 
 # Namespace: utils
 
@@ -36,7 +36,7 @@
 
 #### Defined in
 
-[utils/base58.ts:121](https://github.com/kevinejohn/bsv-minimal/blob/master/src/utils/base58.ts#L121)
+[utils/base58.ts:121](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/utils/base58.ts#L121)
 
 ___
 
@@ -55,7 +55,7 @@ ___
 
 #### Defined in
 
-[utils/hash.ts:19](https://github.com/kevinejohn/bsv-minimal/blob/master/src/utils/hash.ts#L19)
+[utils/hash.ts:19](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/utils/hash.ts#L19)
 
 ___
 
@@ -188,4 +188,4 @@ ___
 
 #### Defined in
 
-[utils/opcode.ts:1](https://github.com/kevinejohn/bsv-minimal/blob/master/src/utils/opcode.ts#L1)
+[utils/opcode.ts:1](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/utils/opcode.ts#L1)

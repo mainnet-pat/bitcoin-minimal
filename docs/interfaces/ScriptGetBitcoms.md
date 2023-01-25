@@ -1,4 +1,4 @@
-[bsv-minimal](../README.md) / ScriptGetBitcoms
+[bitcoin-minimal](../README.md) / ScriptGetBitcoms
 
 # Interface: ScriptGetBitcoms
 
@@ -16,4 +16,4 @@
 
 #### Defined in
 
-[script.ts:19](https://github.com/kevinejohn/bsv-minimal/blob/master/src/script.ts#L19)
+[script.ts:19](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/script.ts#L19)

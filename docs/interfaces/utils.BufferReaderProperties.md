@@ -1,4 +1,4 @@
-[bsv-minimal](../README.md) / [utils](../modules/utils.md) / BufferReaderProperties
+[bitcoin-minimal](../README.md) / [utils](../modules/utils.md) / BufferReaderProperties
 
 # Interface: BufferReaderProperties
 
@@ -19,7 +19,7 @@
 
 #### Defined in
 
-[utils/reader.ts:4](https://github.com/kevinejohn/bsv-minimal/blob/master/src/utils/reader.ts#L4)
+[utils/reader.ts:4](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/utils/reader.ts#L4)
 
 ___
 
@@ -29,4 +29,4 @@ ___
 
 #### Defined in
 
-[utils/reader.ts:5](https://github.com/kevinejohn/bsv-minimal/blob/master/src/utils/reader.ts#L5)
+[utils/reader.ts:5](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/utils/reader.ts#L5)
