@@ -1,4 +1,5 @@
-import { Block, Header, Transaction, Script, utils } from "../src";
+import { Block, Header, Transaction, Script, utils, DSProof, NETWORK_PREFIX } from "../src";
+import * as cashaddress from "../src/utils/cashaddress";
 import fs from "fs";
 import path from "path";
 import assert from "assert";
@@ -6,7 +7,77 @@ const pako = require("pako");
 
 const { Base58, BufferReader, BufferWriter } = utils;
 
+const validPrefixTests = () => {
+  const tests = require('./token-prefix-valid.json');
+  const capability = ["none", "mutable", "minting"];
+  tests.forEach((test: any) => {
+    const prefixBuffer = new BufferReader(test.prefix);
+    const dummyScript = Script.fromBufferReader(prefixBuffer);
+    assert.equal(BigInt(test.data.amount), dummyScript.token?.amount);
+    assert.equal(test.data.category, dummyScript.token?.tokenId.toString("hex"));
+    assert.equal(test.data.nft?.commitment, dummyScript.token?.commitment?.toString("hex"));
+    assert.equal(test.data.nft?.capability, capability[dummyScript.token?.capability ?? 0xdeadbeef]);
+  })
+}
+
+const invalidPrefixTests = () => {
+  const tests = require('./token-prefix-invalid.json');
+  tests.forEach((test: any) => {
+    const prefixBuffer = new BufferReader(test.prefix);
+    try {
+      Script.fromBufferReader(prefixBuffer);
+      assert(false, "Method did not throw");
+    } catch (e: any) {
+      assert(test.error.includes(e.message), `\n${test.error}\ndoes not include\n${e.message}`);
+    }
+  })
+}
+
+const testParsingCashtokensTransaction = () => {
+  const txHex = fs.readFileSync(path.join(__dirname, "./cashtokens_tx.dat"), "utf8");
+  const txBuf = Buffer.from(txHex, "hex");
+  const transaction = Transaction.fromBuffer(txBuf);
+  const script = Script.fromBuffer(transaction.outputs[0].scriptBuffer);
+  assert.equal(script.token?.amount, 5000);
+  assert.equal(script.token?.tokenId.toString("hex"), "942fa20890b75f9ccee68c780832a65d8ed353cca88f76505e15a2c2386463b0");
+  assert.equal(script.token?.capability, 0);
+  assert.equal(script.token?.commitment?.toString("hex"), "abcd");
+}
+
+const testCashAddresses = () => {
+  const cashaddr = "bitcoincash:qrenayanewceqkvqfey542vymvf9kqgghsc68hv269";
+  const decodedcashaddr = cashaddress.decode(cashaddr);
+  type NETWORK_TYPE = keyof typeof NETWORK_PREFIX;
+
+  const network = Object.keys(NETWORK_PREFIX)[Object.values(NETWORK_PREFIX).indexOf(decodedcashaddr[0])] as NETWORK_TYPE;
+  console.log(network, typeof network, typeof NETWORK_PREFIX[network]);
+  const prefix = NETWORK_PREFIX[network] as NETWORK_TYPE;
+  console.log(prefix, typeof prefix);
+  assert.equal(cashaddr, cashaddress.encode_full(decodedcashaddr[0], decodedcashaddr[1], decodedcashaddr[2]));
+  assert.equal(decodedcashaddr[1], 0);
+  assert.equal(cashaddress.encode_full(...decodedcashaddr), cashaddr);
+
+  const tokenaddr = "bitcoincash:zrenayanewceqkvqfey542vymvf9kqgghsls5fzv9k";
+  const decodedtokenaddr = cashaddress.decode(tokenaddr);
+  assert.equal(tokenaddr, cashaddress.encode_full(decodedtokenaddr[0], decodedtokenaddr[1], decodedtokenaddr[2]));
+  assert.equal(decodedtokenaddr[1], 2);
+  assert.equal(cashaddress.encode_full(...decodedtokenaddr), tokenaddr);
+}
+
+const testDSProofs = () => {
+  const dsProofHex = fs.readFileSync(path.join(__dirname, "./dsproof.dat"), "utf8");
+  const dsProofBuf = Buffer.from(dsProofHex, "hex");
+  let dsProof = DSProof.fromBuffer(dsProofBuf);
+  console.log(dsProof);
+}
+
 (async () => {
+  invalidPrefixTests();
+  validPrefixTests();
+  testParsingCashtokensTransaction();
+  testCashAddresses();
+  testDSProofs();
+
   const blockHex = fs.readFileSync(path.join(__dirname, "./block.dat"), "utf8");
   const blockBuf = Buffer.from(blockHex, "hex");
   let block = Block.fromBuffer(blockBuf);

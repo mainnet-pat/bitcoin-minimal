@@ -26,7 +26,7 @@ export default class BufferReader {
       this.buf = obj.buf;
       this.pos = obj.pos || 0;
     } else {
-      throw new TypeError(`Unrecognized argument for BufferReader`);
+      throw new TypeError(`Unrecognized argument for BufferReader ${typeof buf}`);
     }
   }
 
@@ -126,6 +126,26 @@ export default class BufferReader {
           return this.readUInt64LE();
         default:
           return first;
+      }
+    } catch (err) {
+      this.pos = startPos;
+      throw err;
+    }
+  }
+
+  readVarintBigInt() {
+    const startPos = this.pos;
+    try {
+      const first = this.readUInt8();
+      switch (first) {
+        case 0xfd:
+          return BigInt(this.readUInt16LE());
+        case 0xfe:
+          return BigInt(this.readUInt32LE());
+        case 0xff:
+          return this.readUInt64LEBI();
+        default:
+          return BigInt(first);
       }
     } catch (err) {
       this.pos = startPos;

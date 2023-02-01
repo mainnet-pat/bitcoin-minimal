@@ -8,6 +8,7 @@ import BufferWriter, {
 import Hash from "./hash";
 import Opcode from "./opcode";
 import Base58 from "./base58";
+import * as CashAddress from "./cashaddress";
 
 export {
   BufferReader,
@@ -15,6 +16,7 @@ export {
   BufferChunksReader,
   BufferWriter,
   BufferWriterProperties,
+  CashAddress,
   Hash,
   Opcode,
   Base58,

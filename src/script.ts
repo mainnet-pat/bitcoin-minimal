@@ -1,9 +1,16 @@
-import { BufferReader, Opcode, Hash, Base58 } from "./utils";
+import { BufferReader, Opcode, Hash, Base58, CashAddress } from "./utils";
+import { KEY_TYPE } from "./utils/cashaddress";
 
 const NETWORK_BUF = {
   testnet: Buffer.from([0x6f]),
   mainnet: Buffer.from([0x00]),
 };
+
+export const NETWORK_PREFIX = {
+  mainnet: "bitcoincash",
+  testnet: "bchtest",
+  regtest: "bchreg",
+}
 
 export interface ScriptInitOptions {
   opreturn?: boolean;
@@ -34,13 +41,29 @@ export type ScriptBitcom = {
   };
 };
 
+export interface Token {
+  amount: BigInt;
+  tokenId: Buffer;
+  capability?: number;
+  commitment?: Buffer;
+}
+
+export const NFTCapability = {
+  none: 0x00,
+  mutable: 0x01,
+  minting: 0x02,
+};
+
 export default class Script {
   chunks: ScriptChunk[];
   buffer: Buffer;
+  token?: Token;
 
   private constructor(br: BufferReader, chunks: ScriptChunk[]) {
     this.chunks = chunks;
     this.buffer = br.buf;
+
+    this.readTokenInfo(br);
 
     while (!br.finished()) {
       try {
@@ -88,6 +111,92 @@ export default class Script {
           throw new Error(`Invalid script`);
         }
         throw err;
+      }
+    }
+  }
+
+  // https://github.com/bitjson/cashtokens/blob/1d3745e04b2c454f7a194d9fab368df72e8adc69/readme.md#token-encoding
+  private readTokenInfo(br: BufferReader) {
+    if (br.buf[br.pos] === 0xef) {
+      br.readUInt8();
+      if (br.buf.length < 34) {
+        throw Error(`Invalid token prefix: insufficient length. The minimum possible length is 34. Missing bytes: ${34 - br.buf.length}`);
+      }
+
+      this.token = {} as any;
+      this.token!.tokenId = br.readReverse(32);
+      const bitfield = br.readUInt8();
+      if (bitfield === 0) {
+        throw Error("Invalid token prefix: must encode at least one token.");
+      }
+
+      const prefixStructure = bitfield & 0xf0;
+      const reserved = prefixStructure & 0x80;
+      if (reserved !== 0) {
+        throw Error("Invalid token prefix: reserved bit is set.");
+      }
+      const hasCommitmentLength = prefixStructure & 0x40;
+      const hasNFT = prefixStructure & 0x20;
+      const hasAmount = prefixStructure & 0x10;
+
+      const NFTCapability = bitfield & 0x0f;
+
+      let commitmentLength = 0;
+      if (hasNFT) {
+        if (hasCommitmentLength) {
+          try {
+            commitmentLength = br.readVarintNum();
+          } catch (e) {
+            throw Error("Invalid token prefix: invalid non-fungible token commitment. Error reading CompactSize-prefixed bin: invalid CompactSize.");
+          }
+
+          if (commitmentLength === 0) {
+            throw Error("Invalid token prefix: if encoded, commitment length must be greater than 0.");
+          }
+
+          let remainingBytes = br.buf.length - br.pos;
+          if (remainingBytes - commitmentLength < 0) {
+            throw Error(`Invalid token prefix: invalid non-fungible token commitment. Error reading CompactSize-prefixed bin: insufficient bytes. Required bytes: ${commitmentLength}, remaining bytes: ${remainingBytes}`);
+          }
+        }
+
+        if (NFTCapability > 2) {
+          throw Error(`Invalid token prefix: capability must be none (0), mutable (1), or minting (2). Capability value: ${NFTCapability}`);
+        }
+
+        this.token!.capability = NFTCapability;
+
+        if (hasCommitmentLength) {
+          const commitment = br.read(commitmentLength);
+          this.token!.commitment = commitment;
+        } else {
+          this.token!.commitment = Buffer.from([]);
+        }
+      } else {
+        if (hasCommitmentLength) {
+          throw Error("Invalid token prefix: commitment requires an NFT.");
+        }
+        if (NFTCapability > 0) {
+          throw Error("Invalid token prefix: capability requires an NFT.");
+        }
+      }
+
+      if (hasAmount) {
+        let ftAmount;
+        try {
+          ftAmount = br.readVarintBigInt();
+        } catch (e) {
+          throw Error("Invalid token prefix: invalid fungible token amount encoding. Error reading CompactSize");
+        }
+        if (ftAmount === BigInt(0)) {
+          throw Error("Invalid token prefix: if encoded, fungible token amount must be greater than 0.");
+        }
+        if (ftAmount > BigInt("9223372036854775807")) {
+          throw Error(`Invalid token prefix: exceeds maximum fungible token amount of 9223372036854775807. Encoded amount: ${ftAmount.toString()}`);
+        }
+        this.token!.amount = ftAmount;
+      } else {
+        this.token!.amount = BigInt(0);
       }
     }
   }
@@ -225,6 +334,20 @@ export default class Script {
       const check = Hash.sha256sha256(buf).slice(0, 4);
       buf = Buffer.concat([buf, check]);
       return Base58.encode(buf);
+    }
+  }
+
+  toCashAddress(network: keyof typeof NETWORK_PREFIX = "mainnet") {
+    const addressBuf = this.toAddressBuf();
+    if (addressBuf) {
+      return CashAddress.encode_full(NETWORK_PREFIX[network], KEY_TYPE.PUBKEY_TYPE, addressBuf);
+    }
+  }
+
+  toTokenAddress(network: keyof typeof NETWORK_PREFIX = "mainnet") {
+    const addressBuf = this.toAddressBuf();
+    if (addressBuf) {
+      return CashAddress.encode_full(NETWORK_PREFIX[network], KEY_TYPE.PUBKEY_TYPE_WITH_TOKENS, addressBuf);
     }
   }
 }
