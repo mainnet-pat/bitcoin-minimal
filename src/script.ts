@@ -303,7 +303,9 @@ export default class Script {
     return this.buffer;
   }
 
-  toAddressBuf() {
+  toAddressBuf(): [number, Buffer] | undefined {
+    console.log(this.buffer.toString("hex"));
+    // P2PKH
     if (
       // Output
       this.chunks &&
@@ -315,7 +317,7 @@ export default class Script {
       this.chunks[3].opcodenum === Opcode.OP_EQUALVERIFY &&
       this.chunks[4].opcodenum === Opcode.OP_CHECKSIG
     ) {
-      return this.chunks[2].buf;
+      return [KEY_TYPE.PUBKEY_TYPE, this.chunks[2].buf];
     } else if (
       // Input
       this.chunks &&
@@ -323,14 +325,31 @@ export default class Script {
       this.chunks[1].buf &&
       this.chunks[1].buf.length === 33
     ) {
-      return Hash.sha256ripemd160(this.chunks[1].buf);
+      return [KEY_TYPE.PUBKEY_TYPE, Hash.sha256ripemd160(this.chunks[1].buf)];
+    } else if (
+      // P2SH Output
+      this.chunks &&
+      this.chunks.length === 3 &&
+      this.chunks[0].opcodenum === Opcode.OP_HASH160 &&
+      this.chunks[1].buf &&
+      this.chunks[1].buf.length === 20 &&
+      this.chunks[2].opcodenum === Opcode.OP_EQUAL
+    ) {
+      return [KEY_TYPE.SCRIPT_TYPE, this.chunks[1].buf];
+    } else if (
+      // P2SH Input
+      this.chunks &&
+      this.chunks.length &&
+      this.chunks[0].opcodenum !== Opcode.OP_RETURN
+    ) {
+      return [KEY_TYPE.SCRIPT_TYPE, Hash.sha256ripemd160(this.chunks[this.chunks.length-1].buf!)];
     }
   }
 
   toAddress(network: keyof typeof NETWORK_BUF = "mainnet") {
-    const addressBuf = this.toAddressBuf();
-    if (addressBuf) {
-      let buf = Buffer.concat([NETWORK_BUF[network], addressBuf]);
+    const decoded = this.toAddressBuf();
+    if (decoded) {
+      let buf = Buffer.concat([NETWORK_BUF[network], decoded[1]]);
       const check = Hash.sha256sha256(buf).slice(0, 4);
       buf = Buffer.concat([buf, check]);
       return Base58.encode(buf);
@@ -338,16 +357,16 @@ export default class Script {
   }
 
   toCashAddress(network: keyof typeof NETWORK_PREFIX = "mainnet") {
-    const addressBuf = this.toAddressBuf();
-    if (addressBuf) {
-      return CashAddress.encode_full(NETWORK_PREFIX[network], KEY_TYPE.PUBKEY_TYPE, addressBuf);
+    const decoded = this.toAddressBuf();
+    if (decoded) {
+      return CashAddress.encode_full(NETWORK_PREFIX[network], ...decoded);
     }
   }
 
   toTokenAddress(network: keyof typeof NETWORK_PREFIX = "mainnet") {
-    const addressBuf = this.toAddressBuf();
-    if (addressBuf) {
-      return CashAddress.encode_full(NETWORK_PREFIX[network], KEY_TYPE.PUBKEY_TYPE_WITH_TOKENS, addressBuf);
+    const decoded = this.toAddressBuf();
+    if (decoded) {
+      return CashAddress.encode_full(NETWORK_PREFIX[network], decoded[0] + 2, decoded[1]);
     }
   }
 }
