@@ -4,6 +4,10 @@
 
 ## Table of contents
 
+### Namespaces
+
+- [CashAddress](utils.CashAddress.md)
+
 ### Classes
 
 - [BufferChunksReader](../classes/utils.BufferChunksReader.md)

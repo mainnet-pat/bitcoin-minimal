@@ -11,6 +11,8 @@ bitcoin-minimal
 ### Classes
 
 - [Block](classes/Block.md)
+- [DSProof](classes/DSProof.md)
+- [DSProofSpender](classes/DSProofSpender.md)
 - [Header](classes/Header.md)
 - [Script](classes/Script.md)
 - [Transaction](classes/Transaction.md)
@@ -28,6 +30,10 @@ bitcoin-minimal
 
 - [BlockStream](README.md#blockstream)
 - [ScriptBitcom](README.md#scriptbitcom)
+
+### Variables
+
+- [NETWORK\_PREFIX](README.md#network_prefix)
 
 ## Type Aliases
 
@@ -78,4 +84,22 @@ ___
 
 #### Defined in
 
-[script.ts:22](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/script.ts#L22)
+[script.ts:29](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/script.ts#L29)
+
+## Variables
+
+### NETWORK\_PREFIX
+
+• `Const` **NETWORK\_PREFIX**: `Object`
+
+#### Type declaration
+
+| Name | Type |
+| :------ | :------ |
+| `mainnet` | `string` |
+| `regtest` | `string` |
+| `testnet` | `string` |
+
+#### Defined in
+
+[script.ts:9](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/script.ts#L9)

@@ -33,6 +33,7 @@
 - [readUInt64LEBI](utils.BufferReader.md#readuint64lebi)
 - [readUInt8](utils.BufferReader.md#readuint8)
 - [readVarLengthBuffer](utils.BufferReader.md#readvarlengthbuffer)
+- [readVarintBigInt](utils.BufferReader.md#readvarintbigint)
 - [readVarintNum](utils.BufferReader.md#readvarintnum)
 - [reverse](utils.BufferReader.md#reverse)
 - [slice](utils.BufferReader.md#slice)
@@ -167,7 +168,7 @@ ___
 
 #### Defined in
 
-[utils/reader.ts:158](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/utils/reader.ts#L158)
+[utils/reader.ts:178](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/utils/reader.ts#L178)
 
 ___
 
@@ -307,6 +308,20 @@ ___
 
 #### Defined in
 
+[utils/reader.ts:156](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/utils/reader.ts#L156)
+
+___
+
+### readVarintBigInt
+
+▸ **readVarintBigInt**(): `bigint`
+
+#### Returns
+
+`bigint`
+
+#### Defined in
+
 [utils/reader.ts:136](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/utils/reader.ts#L136)
 
 ___
@@ -335,7 +350,7 @@ ___
 
 #### Defined in
 
-[utils/reader.ts:153](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/utils/reader.ts#L153)
+[utils/reader.ts:173](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/utils/reader.ts#L173)
 
 ___
 

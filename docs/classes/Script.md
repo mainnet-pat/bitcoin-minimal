@@ -12,15 +12,19 @@
 
 - [buffer](Script.md#buffer)
 - [chunks](Script.md#chunks)
+- [token](Script.md#token)
 
 ### Methods
 
 - [getBitcoms](Script.md#getbitcoms)
 - [getOpReturn](Script.md#getopreturn)
 - [parseBitcoms](Script.md#parsebitcoms)
+- [readTokenInfo](Script.md#readtokeninfo)
 - [toAddress](Script.md#toaddress)
 - [toAddressBuf](Script.md#toaddressbuf)
 - [toBuffer](Script.md#tobuffer)
+- [toCashAddress](Script.md#tocashaddress)
+- [toTokenAddress](Script.md#totokenaddress)
 - [fromBuffer](Script.md#frombuffer)
 - [fromBufferReader](Script.md#frombufferreader)
 
@@ -39,7 +43,7 @@
 
 #### Defined in
 
-[script.ts:41](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/script.ts#L41)
+[script.ts:62](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/script.ts#L62)
 
 ## Properties
 
@@ -49,7 +53,7 @@
 
 #### Defined in
 
-[script.ts:39](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/script.ts#L39)
+[script.ts:59](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/script.ts#L59)
 
 ___
 
@@ -59,7 +63,17 @@ ___
 
 #### Defined in
 
-[script.ts:38](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/script.ts#L38)
+[script.ts:58](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/script.ts#L58)
+
+___
+
+### token
+
+• `Optional` **token**: `Token`
+
+#### Defined in
+
+[script.ts:60](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/script.ts#L60)
 
 ## Methods
 
@@ -79,7 +93,7 @@ ___
 
 #### Defined in
 
-[script.ts:178](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/script.ts#L178)
+[script.ts:287](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/script.ts#L287)
 
 ___
 
@@ -93,7 +107,7 @@ ___
 
 #### Defined in
 
-[script.ts:121](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/script.ts#L121)
+[script.ts:230](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/script.ts#L230)
 
 ___
 
@@ -107,7 +121,27 @@ ___
 
 #### Defined in
 
-[script.ts:149](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/script.ts#L149)
+[script.ts:258](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/script.ts#L258)
+
+___
+
+### readTokenInfo
+
+▸ `Private` **readTokenInfo**(`br`): `void`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `br` | [`BufferReader`](utils.BufferReader.md) |
+
+#### Returns
+
+`void`
+
+#### Defined in
+
+[script.ts:119](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/script.ts#L119)
 
 ___
 
@@ -127,21 +161,21 @@ ___
 
 #### Defined in
 
-[script.ts:221](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/script.ts#L221)
+[script.ts:349](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/script.ts#L349)
 
 ___
 
 ### toAddressBuf
 
-▸ **toAddressBuf**(): `undefined` \| `Buffer`
+▸ **toAddressBuf**(): `undefined` \| [`number`, `Buffer`]
 
 #### Returns
 
-`undefined` \| `Buffer`
+`undefined` \| [`number`, `Buffer`]
 
 #### Defined in
 
-[script.ts:197](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/script.ts#L197)
+[script.ts:306](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/script.ts#L306)
 
 ___
 
@@ -155,7 +189,47 @@ ___
 
 #### Defined in
 
-[script.ts:193](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/script.ts#L193)
+[script.ts:302](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/script.ts#L302)
+
+___
+
+### toCashAddress
+
+▸ **toCashAddress**(`network?`): `undefined` \| `string`
+
+#### Parameters
+
+| Name | Type | Default value |
+| :------ | :------ | :------ |
+| `network` | ``"testnet"`` \| ``"mainnet"`` \| ``"regtest"`` | `"mainnet"` |
+
+#### Returns
+
+`undefined` \| `string`
+
+#### Defined in
+
+[script.ts:359](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/script.ts#L359)
+
+___
+
+### toTokenAddress
+
+▸ **toTokenAddress**(`network?`): `undefined` \| `string`
+
+#### Parameters
+
+| Name | Type | Default value |
+| :------ | :------ | :------ |
+| `network` | ``"testnet"`` \| ``"mainnet"`` \| ``"regtest"`` | `"mainnet"` |
+
+#### Returns
+
+`undefined` \| `string`
+
+#### Defined in
+
+[script.ts:366](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/script.ts#L366)
 
 ___
 
@@ -176,7 +250,7 @@ ___
 
 #### Defined in
 
-[script.ts:95](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/script.ts#L95)
+[script.ts:204](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/script.ts#L204)
 
 ___
 
@@ -197,4 +271,4 @@ ___
 
 #### Defined in
 
-[script.ts:100](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/script.ts#L100)
+[script.ts:209](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/script.ts#L209)

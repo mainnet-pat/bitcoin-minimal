@@ -16,4 +16,4 @@
 
 #### Defined in
 
-[script.ts:19](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/script.ts#L19)
+[script.ts:26](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/script.ts#L26)
