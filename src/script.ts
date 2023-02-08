@@ -304,10 +304,17 @@ export default class Script {
   }
 
   toAddressBuf(): [number, Buffer] | undefined {
-    console.log(this.buffer.toString("hex"));
-    // P2PKH
     if (
-      // Output
+      // P2PK Output - <Public Key 33 bytes> OP_CHECKSIG
+      this.chunks &&
+      this.chunks.length === 2 &&
+      this.chunks[0].buf &&
+      this.chunks[0].buf.length === 33 &&
+      this.chunks[1].opcodenum === Opcode.OP_CHECKSIG
+    ) {
+      return [KEY_TYPE.PUBKEY_TYPE, Hash.sha256ripemd160(this.chunks[0].buf)];
+    } else if (
+      // P2PKH Output - OP_DUP OP_HASH160 <Public Key Hash 20 bytes> OP_EQUAL OP_CHECKSIG
       this.chunks &&
       this.chunks.length === 5 &&
       this.chunks[0].opcodenum === Opcode.OP_DUP &&
@@ -319,7 +326,7 @@ export default class Script {
     ) {
       return [KEY_TYPE.PUBKEY_TYPE, this.chunks[2].buf];
     } else if (
-      // Input
+      // P2PKH Input - <Signature> <Public Key 33 bytes>
       this.chunks &&
       this.chunks.length === 2 &&
       this.chunks[1].buf &&
@@ -327,7 +334,7 @@ export default class Script {
     ) {
       return [KEY_TYPE.PUBKEY_TYPE, Hash.sha256ripemd160(this.chunks[1].buf)];
     } else if (
-      // P2SH Output
+      // P2SH Output - OP_HASH160 <Script Hash 20 bytes> OP_EQUAL
       this.chunks &&
       this.chunks.length === 3 &&
       this.chunks[0].opcodenum === Opcode.OP_HASH160 &&
@@ -337,12 +344,13 @@ export default class Script {
     ) {
       return [KEY_TYPE.SCRIPT_TYPE, this.chunks[1].buf];
     } else if (
-      // P2SH Input
+      // P2SH Input - [<literally anything> <...>] <redeemScript>
       this.chunks &&
       this.chunks.length &&
       this.chunks[0].opcodenum !== Opcode.OP_RETURN
     ) {
-      return [KEY_TYPE.SCRIPT_TYPE, Hash.sha256ripemd160(this.chunks[this.chunks.length-1].buf!)];
+      const redeemScript = this.chunks[this.chunks.length-1].buf!;
+      return [KEY_TYPE.SCRIPT_TYPE, Hash.sha256ripemd160(redeemScript)];
     }
   }
 
