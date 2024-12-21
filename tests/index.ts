@@ -109,6 +109,12 @@ const testDSProofs = () => {
   assert.equal(block.transactions, undefined);
   assert.equal(block.getTransactions().length, 26);
 
+  const rawTransactions = block.getRawTransactions();
+  assert.equal(rawTransactions.length, 26);
+  for (const [index, tx] of block.transactions!.entries()) {
+    assert.equal(tx.toBuffer().toString("hex"), rawTransactions[index].toString("hex"));
+  }
+
   const header = Header.fromBuffer(blockBuf);
   const headerBuf = header.toBuffer();
   const header2 = Header.fromBuffer(headerBuf);

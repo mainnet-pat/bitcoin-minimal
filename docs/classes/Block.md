@@ -31,6 +31,7 @@
 - [finished](Block.md#finished)
 - [getHash](Block.md#gethash)
 - [getHeight](Block.md#getheight)
+- [getRawTransactions](Block.md#getrawtransactions)
 - [getTransactions](Block.md#gettransactions)
 - [getTransactionsAsync](Block.md#gettransactionsasync)
 - [toBuffer](Block.md#tobuffer)
@@ -201,7 +202,7 @@ ___
 
 #### Defined in
 
-[block.ts:196](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/block.ts#L196)
+[block.ts:239](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/block.ts#L239)
 
 ___
 
@@ -222,7 +223,7 @@ ___
 
 #### Defined in
 
-[block.ts:115](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/block.ts#L115)
+[block.ts:158](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/block.ts#L158)
 
 ___
 
@@ -236,7 +237,7 @@ ___
 
 #### Defined in
 
-[block.ts:189](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/block.ts#L189)
+[block.ts:232](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/block.ts#L232)
 
 ___
 
@@ -286,6 +287,20 @@ ___
 
 #### Defined in
 
+[block.ts:125](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/block.ts#L125)
+
+___
+
+### getRawTransactions
+
+▸ **getRawTransactions**(): `undefined` \| [`Transaction`](Transaction.md)[]
+
+#### Returns
+
+`undefined` \| [`Transaction`](Transaction.md)[]
+
+#### Defined in
+
 [block.ts:82](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/block.ts#L82)
 
 ___
@@ -320,7 +335,7 @@ ___
 
 #### Defined in
 
-[block.ts:149](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/block.ts#L149)
+[block.ts:192](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/block.ts#L192)
 
 ___
 
@@ -334,7 +349,7 @@ ___
 
 #### Defined in
 
-[block.ts:184](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/block.ts#L184)
+[block.ts:227](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/block.ts#L227)
 
 ___
 
@@ -348,7 +363,7 @@ ___
 
 #### Defined in
 
-[block.ts:96](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/block.ts#L96)
+[block.ts:139](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/block.ts#L139)
 
 ___
 

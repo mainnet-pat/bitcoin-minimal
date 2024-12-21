@@ -161,7 +161,7 @@ ___
 
 #### Defined in
 
-[script.ts:349](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/script.ts#L349)
+[script.ts:357](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/script.ts#L357)
 
 ___
 
@@ -209,7 +209,7 @@ ___
 
 #### Defined in
 
-[script.ts:359](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/script.ts#L359)
+[script.ts:367](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/script.ts#L367)
 
 ___
 
@@ -229,7 +229,7 @@ ___
 
 #### Defined in
 
-[script.ts:366](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/script.ts#L366)
+[script.ts:374](https://github.com/mainnet-pat/bitcoin-minimal/blob/master/src/script.ts#L374)
 
 ___
 

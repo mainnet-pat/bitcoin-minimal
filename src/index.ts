@@ -1,4 +1,3 @@
-require("source-map-support").install();
 import Block, { BlockOptions, BlockStream } from "./block";
 import Transaction, {
   TransactionInput,

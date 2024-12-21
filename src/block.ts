@@ -79,6 +79,49 @@ export default class Block {
     return this.transactions;
   }
 
+  getRawTransactions() {
+    const transactions: Buffer[] = [];
+    const { txPos, txCount } = this;
+
+    const buf = this.toBuffer();
+    const br = new BufferReader(buf);
+    if (!txPos) throw Error("Missing txPos");
+    if (!txCount) throw Error("Missing txCount");
+    br.read(txPos); // Skip header and txCount
+    for (let i = 0; i < txCount; i++) {
+      const bufStart = br.pos;
+      br.pos += 4; // version
+      const sizeTxIns = br.readVarintNum();
+      for (let vin = 0; vin < sizeTxIns; vin++) {
+        br.pos += 32; // prevTxId
+        br.pos += 4;; // vout
+
+        const len = br.readVarintNum();
+        br.pos += len; // scriptBuffer
+
+        br.pos += 4; // sequenceNumber
+      }
+
+      const sizeTxOuts = br.readVarintNum();
+      for (let vout = 0; vout < sizeTxOuts; vout++) {
+        br.pos += 8; // satoshis
+
+        const len = br.readVarintNum();
+        br.pos += len; // scriptBuffer
+      }
+      br.pos += 4; // nLockTime
+
+      const bufEnd = br.pos;
+      const buffer = br.slice(bufStart, bufEnd);
+      if (buffer.length !== bufEnd - bufStart) {
+        throw new Error(`Transaction is corrupt`);
+      }
+
+      transactions.push(buffer);
+    }
+    return transactions;
+  }
+
   getHeight() {
     // https://en.bitcoin.it/wiki/BIP_0034
     if (!this.header) throw Error("Missing header");
